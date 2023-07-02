@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 
 int main(int argc, char **argv)
 {
 	FILE *file;
-	char line[100];
+	char line[1024];
 	unsigned long long a, small_fac = 1;
 	unsigned long long num;
 
@@ -23,7 +22,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	while (fgets(line, 100, file))
+	while (fgets(line, sizeof(line), file))
 	{
 		num = strtoull(line, NULL, 10);
 		a = 2;
