@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 			}
 			a++;
 		}
-		printf("%llu = %llu * %llu\n", num, num / small_fac, small_fac);
+		printf("%llu=%llu*%llu\n", num, num / small_fac, small_fac);
 	}
 	fclose(file);
 	return (0);
