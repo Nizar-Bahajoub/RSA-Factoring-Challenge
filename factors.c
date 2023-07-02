@@ -7,25 +7,25 @@ int main(int argc, char **argv)
 {
 	FILE *file;
 	char line[100];
-	int a, small_fac = 1;
-	long long num;
+	unsigned long long a, small_fac = 1;
+	unsigned long long num;
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: factors <file>");
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "Usage: %s <file>\n", argv[0]);
+		return (1);
 	}
 
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: file can't open %s", argv[1]);
-		exit(EXIT_FAILURE);
+		return (1);
 	}
 
-	while (fgets(line, 100, file) != NULL)
+	while (fgets(line, 100, file))
 	{
-		num = strtoll(line, NULL, 10);
+		num = strtoull(line, NULL, 10);
 		a = 2;
 		while (a * a <= num)
 		{
@@ -36,10 +36,7 @@ int main(int argc, char **argv)
 			}
 			a++;
 		}
-		if (small_fac != 1)
-			printf("%lld = %lld * %d\n", num, num / small_fac, small_fac);
-		else
-			printf("%lld is a prime number.\n", num);
+		printf("%llu = %llu * %llu\n", num, num / small_fac, small_fac);
 	}
 	fclose(file);
 	return (0);
